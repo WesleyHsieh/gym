@@ -58,6 +58,13 @@ register(
 )
 
 register(
+    id='MultiStateEnv-v0',
+    entry_point='gym.envs.classic_control:MultiStateEnv',
+    timestep_limit=200,
+    reward_threshold=195.0,
+)
+
+register(
     id='CartPole-v1',
     entry_point='gym.envs.classic_control:CartPoleEnv',
     timestep_limit=500,

@@ -5,14 +5,20 @@ from gym import spaces
 from gym.utils import seeding
 import numpy as np
 from gym.envs.classic_control.cartpole import CartPoleEnv
+from gym.envs.classic_control.mountain_car import MountainCarEnv
+from gym.envs.atari.atari_env import AtariEnv
 from gym import spaces
 logger = logging.getLogger(__name__)
 
-class MultiStateEnv(CartPoleEnv):
-    def __init__(self, num_prev_states=2):
+class MountainCarMultiStateEnv(MountainCarEnv):
+    """
+    Expands output state to include
+    previous states.
+    """
+    def __init__(self, num_prev_states=2, **kwargs):
         self.state_history = []
         self.num_prev_states = num_prev_states
-        super().__init__()
+        super().__init__(**kwargs)
 
         # Expand observation space
         assert isinstance(self.observation_space, spaces.Box)

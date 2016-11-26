@@ -1,5 +1,51 @@
 from gym.envs.registration import registry, register, make, spec
 
+# Project
+# ----------------------------------------
+register(
+    id='CartPoleMultiState-v0',
+    entry_point='gym.envs.project:CartPoleMultiStateEnv',
+    timestep_limit=200,
+    reward_threshold=195.0,
+)
+
+register(
+    id='MountainCarMultiState-v0',
+    entry_point='gym.envs.project:MountainCarMultiStateEnv',
+    timestep_limit=200,
+    reward_threshold=-110.0,
+)
+
+register(
+    id='PongMultiState-v0',
+    entry_point='gym.envs.project:PongMultiStateEnv',
+    kwargs={'game': 'pong', 'obs_type': 'image', 'repeat_action_probability': 0.25},
+    timestep_limit=10000,
+    nondeterministic=False,
+)
+
+register(
+    id='CartPoleNoisy-v0',
+    entry_point='gym.envs.project:CartPoleNoisyEnv',
+    timestep_limit=200,
+    reward_threshold=195.0,
+)
+
+register(
+    id='MountainCarNoisy-v0',
+    entry_point='gym.envs.project:MountainCarNoisyEnv',
+    timestep_limit=200,
+    reward_threshold=-110.0,
+)
+
+register(
+    id='PongNoisy-v0',
+    entry_point='gym.envs.project:PongNoisyEnv',
+    kwargs={'game': 'pong', 'obs_type': 'image', 'repeat_action_probability': 0.25},
+    timestep_limit=10000,
+    nondeterministic=False,
+)
+
 # Algorithmic
 # ----------------------------------------
 
@@ -53,13 +99,6 @@ register(
 register(
     id='CartPole-v0',
     entry_point='gym.envs.classic_control:CartPoleEnv',
-    timestep_limit=200,
-    reward_threshold=195.0,
-)
-
-register(
-    id='MultiStateEnv-v0',
-    entry_point='gym.envs.classic_control:MultiStateEnv',
     timestep_limit=200,
     reward_threshold=195.0,
 )
